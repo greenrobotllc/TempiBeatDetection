@@ -9,8 +9,8 @@ import Foundation
 import Accelerate
 
 typealias TempiBeatDetectionCallback = (
-    timeStamp: Double,
-    bpm: Float
+    _ timeStamp: Double,
+    _ bpm: Float
     ) -> Void
 
 struct TempiPeakInterval {
@@ -35,13 +35,13 @@ class TempiBeatDetector: NSObject {
     var maxTempo: Float = 220
 
     /// The number of bands to split the audio signal into. 6, 12, or 30 supported.
-    var frequencyBands: Int = 12
+    var frequencyBands: Int = 6
 
     var beatDetectionHandler: TempiBeatDetectionCallback!
     
     private var audioInput: TempiAudioInput!
     private var peakDetector: TempiPeakDetector!
-    private var lastMagnitudes: [Float]!
+    private var lastMagnitudes: [Float] = [Float]()
     
     // Bucketing
     private var peakHistoryLength: Double = 4.0 // The time in seconds that we want intervals for before we do a bucket analysis to predict a tempo
@@ -92,18 +92,18 @@ class TempiBeatDetector: NSObject {
         self.audioInput.stopRecording()
     }
     
-    private func handleMicAudio(timeStamp timeStamp: Double, numberOfFrames:Int, samples:[Float]) {
+    private func handleMicAudio(timeStamp: Double, numberOfFrames:Int, samples:[Float]) {
         
         if (self.queuedSamples.count + numberOfFrames < self.chunkSize) {
             // We're not going to have enough samples for analysis. Queue the samples and save off the timeStamp.
-            self.queuedSamples.appendContentsOf(samples)
+            self.queuedSamples.append(contentsOf: samples)
             if self.savedTimeStamp == nil {
                 self.savedTimeStamp = timeStamp
             }
             return
         }
         
-        self.queuedSamples.appendContentsOf(samples)
+        self.queuedSamples.append(contentsOf: samples)
 
         var baseTimeStamp: Double = self.savedTimeStamp != nil ? self.savedTimeStamp : timeStamp
         
@@ -119,7 +119,10 @@ class TempiBeatDetector: NSObject {
     }
     
     func setupCommon() {
-        self.lastMagnitudes = [Float](count: self.frequencyBands, repeatedValue: 0)
+        //self.lastMagnitudes = [Float].init()
+        //self.lastMagnitudes.reserveCapacity(self.frequencyBands)
+        self.lastMagnitudes = [Float](repeating:0.0, count: self.frequencyBands)
+//[Float](_unsafeUninitializedCapacity: self.frequencyBands, initializingWith: 0)
         self.peakHistory = [TempiPeakInterval]()
         
         self.peakDetector = TempiPeakDetector(peakDetectionCallback: { (timeStamp, magnitude) in
@@ -139,7 +142,7 @@ class TempiBeatDetector: NSObject {
     }
 #endif
     
-    func analyzeAudioChunk(timeStamp timeStamp: Double, samples: [Float]) {
+    func analyzeAudioChunk(timeStamp: Double, samples: [Float]) {
         let (magnitude, success) = self.calculateMagnitude(timeStamp: timeStamp, samples: samples)
         if (!success) {
             return;
@@ -152,7 +155,8 @@ class TempiBeatDetector: NSObject {
         self.peakDetector.addMagnitude(timeStamp: timeStamp, magnitude: magnitude)
     }
     
-    private func handlePeak(timeStamp timeStamp: Double, magnitude: Float) {
+    private func handlePeak(timeStamp: Double, magnitude: Float) {
+        //print("handle peak")
         if (self.lastPeakTimeStamp == nil) {
             self.lastPeakTimeStamp = timeStamp
             return
@@ -164,19 +168,19 @@ class TempiBeatDetector: NSObject {
             fputs("\(timeStamp) 1\n", self.plotMarkersFile)
         }
         
-        let mappedInterval = self.mapInterval(interval)
+        let mappedInterval = self.mapInterval(interval:interval)
         let peakInterval = TempiPeakInterval(timeStamp: timeStamp, magnitude: magnitude, interval: Float(mappedInterval))
         self.peakHistory.append(peakInterval)
         
         if self.peakHistory.count >= 2 &&
             (self.peakHistory.last?.timeStamp)! - (self.peakHistory.first?.timeStamp)! >= self.peakHistoryLength {
-            self.performBucketAnalysisAtTimeStamp(timeStamp)
+            self.performBucketAnalysisAtTimeStamp(timeStamp: timeStamp)
         }
         
         self.lastPeakTimeStamp = timeStamp
     }
     
-    private func calculateMagnitude(timeStamp timeStamp: Double, samples: [Float]) -> (magnitude: Float, success: Bool) {
+    private func calculateMagnitude(timeStamp: Double, samples: [Float]) -> (magnitude: Float, success: Bool) {
         let fft: TempiFFT = TempiFFT(withSize: self.chunkSize, sampleRate: self.sampleRate)
         fft.windowType = TempiFFTWindowType.hanning
         fft.fftForward(samples)
@@ -197,15 +201,26 @@ class TempiBeatDetector: NSObject {
         for i in 0..<self.frequencyBands {
             var mag = fft.magnitudeAtBand(i)
             
+            //mag = mag * 1000.0
             if mag > 0.0 {
                 mag = log10f(mag)
             }
             
             // The 1000.0 here isn't important; just makes the data easier to see in plots, etc.
+//            if(self.lastMagnitudes.count == 0) {
+//                self.lastMagnitudes.append( mag)
+//                break
+//            }
+             //let diff: Float = max(0.0, mag - self.lastMagnitudes[i])
+            //let diff: Float = mag - self.lastMagnitudes[i]
+
             let diff: Float = 1000.0 * max(0.0, mag - self.lastMagnitudes[i])
             
-            self.lastMagnitudes[i] = mag
+            //print(diff)
+
             diffs.append(diff)
+            self.lastMagnitudes[i] = mag
+
         }
         
         if self.firstPass {
@@ -214,11 +229,15 @@ class TempiBeatDetector: NSObject {
             return (0.0, false)
         }
 
-        return (tempi_median(diffs), true)
+        return (tempi_median(a: &diffs), true)
     }
     
     private func performBucketAnalysisAtTimeStamp(timeStamp: Double) {
-        var buckets = [[Float]].init(count: self.bucketCnt, repeatedValue: [Float]())
+        var buckets:[[Float]] = [[Float]].init()
+        buckets = [[Float]](repeating: [Float](), count: self.bucketCnt)
+        //(repeating:[Float].init(), count: self.bucketCnt)
+
+        //[[Float]].init(_unsafeUninitializedCapacity: self.bucketCnt, initializingWith: [Float]())
         
         let minInterval: Float = 60.0/self.maxTempo
         let maxInterval: Float = 60.0/self.minTempo
@@ -239,23 +258,23 @@ class TempiBeatDetector: NSObject {
         })
         
         // Sort to find which bucket has the most intervals.
-        buckets = buckets.sort({ $0.count < $1.count })
+        buckets = buckets.sorted(by: { $0.count < $1.count })
         
         // The predominant bucket is the last.
-        let predominantIntervals = buckets.last
+        var predominantIntervals = buckets.last
         
         // Use the median interval for prediction.
-        let medianPredominantInterval = tempi_median(predominantIntervals!)
+        let medianPredominantInterval = tempi_median(a: &predominantIntervals!)
         
         // Divide into 60 to get the bpm.
         var bpm = 60.0 / medianPredominantInterval
         
         var multiple: Float = 0.0
         
-        if self.lastMeasuredTempo == 0 || self.tempo(bpm, isNearTempo: self.lastMeasuredTempo, epsilon: 2.0) {
+        if self.lastMeasuredTempo == 0 || self.tempo(tempo1: bpm, isNearTempo: self.lastMeasuredTempo, epsilon: 2.0) {
             // The tempo remained constant. Bump our confidence up a notch.
             self.confidence = min(10, self.confidence + 1)
-        } else if self.tempo(bpm, isMultipleOf: self.lastMeasuredTempo, multiple: &multiple) {
+        } else if self.tempo(tempo1: bpm, isMultipleOf: self.lastMeasuredTempo, multiple: &multiple) {
             // The tempo changed but it's still a multiple of the last. Adapt it by that multiple but don't change confidence.
             originalBPM = bpm
             bpm = bpm / multiple
@@ -266,28 +285,28 @@ class TempiBeatDetector: NSObject {
             if self.confidence > 7 {
                 // The tempo changed but our confidence level in the old tempo was high.
                 // Don't report this result.
-                print(String(format: "%0.2f: IGNORING bpm = %0.2f", timeStamp, bpm));
+                //print(String(format: "%0.2f: IGNORING bpm = %0.2f", timeStamp, bpm));
                 self.lastMeasuredTempo = bpm
                 return
             }
         }
         
         if self.beatDetectionHandler != nil {
-            self.beatDetectionHandler(timeStamp: timeStamp, bpm: bpm)
+            self.beatDetectionHandler(timeStamp, bpm)
         }
         
         if adjusted {
-            print(String(format:"%0.2f: bpm = %0.2f (adj from %0.2f)", timeStamp, bpm, originalBPM));
+            //print(String(format:"%0.2f: bpm = %0.2f (adj from %0.2f)", timeStamp, bpm, originalBPM));
         } else {
-            print(String(format:"%0.2f: bpm = %0.2f", timeStamp, bpm));
+            //print(String(format:"%0.2f: bpm = %0.2f", timeStamp, bpm));
         }
         
         self.testTotal += 1
-        if self.tempo(bpm, isNearTempo: self.testActualTempo, epsilon: self.allowedTempoVariance) {
+        if self.tempo(tempo1: bpm, isNearTempo: self.testActualTempo, epsilon: self.allowedTempoVariance) {
             self.testCorrect += 1
         } else {
-            if self.tempo(bpm, isNearTempo: 2.0 * self.testActualTempo, epsilon: self.allowedTempoVariance) ||
-                self.tempo(bpm, isNearTempo: 0.5 * self.testActualTempo, epsilon: self.allowedTempoVariance) {
+            if self.tempo(tempo1: bpm, isNearTempo: 2.0 * self.testActualTempo, epsilon: self.allowedTempoVariance) ||
+                self.tempo(tempo1: bpm, isNearTempo: 0.5 * self.testActualTempo, epsilon: self.allowedTempoVariance) {
                 self.testCorrect += 1
             }
         }
@@ -309,11 +328,11 @@ class TempiBeatDetector: NSObject {
         return mappedInterval
     }
     
-    private func tempo(tempo1: Float, isMultipleOf tempo2: Float, inout multiple: Float) -> Bool
+    private func tempo(tempo1: Float, isMultipleOf tempo2: Float,  multiple: inout Float) -> Bool
     {
         let multiples: [Float] = [0.5, 1.5, 1.33333, 2.0]
         for m in multiples {
-            if self.tempo(m * tempo2, isNearTempo: tempo1, epsilon: m * 3.0) {
+            if self.tempo(tempo1: m * tempo2, isNearTempo: tempo1, epsilon: m * 3.0) {
                 multiple = m
                 return true
             }

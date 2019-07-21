@@ -14,8 +14,8 @@ struct TempiPeak {
 }
 
 typealias TempiPeakDetectionCallback = (
-    timeStamp: Double,
-    magnitude: Float
+    _ _timeStamp: Double,
+    _ _magnitude: Float
     ) -> Void
 
 class TempiPeakDetector: NSObject {
@@ -47,14 +47,14 @@ class TempiPeakDetector: NSObject {
     
     private var lastPeakTick: Int = 0
 
-    init(peakDetectionCallback callback: TempiPeakDetectionCallback, sampleRate: Float) {
+    init(peakDetectionCallback callback: @escaping TempiPeakDetectionCallback, sampleRate: Float) {
         self.peakDetectionCallback = callback
         self.sampleRate = sampleRate
         self.sampleInterval = 1.0 / Double(sampleRate)
     }
     
     // Add a magnitude to the analysis window and return whether it resulted in a peak or not.
-    func addMagnitude(timeStamp timeStamp: Double, magnitude: Float) {
+    func addMagnitude(timeStamp: Double, magnitude: Float) {
         var recentMax: Float = 0.0
         
         // Make our reference for the overall max go back 1 second
@@ -89,16 +89,16 @@ class TempiPeakDetector: NSObject {
         self.counter += 1
         self.lastMagnitude = magnitude
         
-        self.evaluatePeakQueue(timeStamp)
+        self.evaluatePeakQueue(timeStamp: timeStamp)
     }
     
-    private func handlePeak(timeStamp timeStamp: Double, magnitude: Float, longWindowThreshold: Float) {
+    private func handlePeak(timeStamp: Double, magnitude: Float, longWindowThreshold: Float) {
         self.isOnsetting = false
         
         // We might have a peak, but only if the incoming magnitude > some fraction of the loudest recent (1s) mag
         if magnitude >= longWindowThreshold {
             if (self.coalesceInterval == 0.0) {
-                self.peakDetectionCallback(timeStamp: timeStamp, magnitude: magnitude)
+                self.peakDetectionCallback(timeStamp, magnitude)
             } else {
                 peakQueue.append(TempiPeak(timeStamp: timeStamp, magnitude: magnitude))
             }
@@ -125,7 +125,7 @@ class TempiPeakDetector: NSObject {
             }
 
             self.peakQueue.removeAll()
-            self.peakDetectionCallback(timeStamp: max.timeStamp, magnitude: max.magnitude)
+            self.peakDetectionCallback(max.timeStamp, max.magnitude)
         }
     }
     
