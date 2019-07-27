@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F35835C22E922FA00F3155F /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F35835A22E922FA00F3155F /* AVKit.framework */; };
+		6F35835D22E922FA00F3155F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F35835B22E922FA00F3155F /* AVFoundation.framework */; };
 		EF0587141CD1827500745BF6 /* TempiBeatDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0587131CD1827500745BF6 /* TempiBeatDetector.swift */; };
 		EF0587171CD6F2BA00745BF6 /* TempiBeatDetectorValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0587161CD6F2BA00745BF6 /* TempiBeatDetectorValidation.swift */; };
 		EFE97D681CCFC8850082BAEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE97D671CCFC8850082BAEC /* AppDelegate.swift */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6F35835A22E922FA00F3155F /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		6F35835B22E922FA00F3155F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		EF0587131CD1827500745BF6 /* TempiBeatDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempiBeatDetector.swift; sourceTree = "<group>"; };
 		EF0587161CD6F2BA00745BF6 /* TempiBeatDetectorValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempiBeatDetectorValidation.swift; sourceTree = "<group>"; };
 		EFE97D641CCFC8850082BAEC /* TempiBeatDetection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TempiBeatDetection.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +65,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F35835C22E922FA00F3155F /* AVKit.framework in Frameworks */,
+				6F35835D22E922FA00F3155F /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,12 +80,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F35835922E922FA00F3155F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6F35835B22E922FA00F3155F /* AVFoundation.framework */,
+				6F35835A22E922FA00F3155F /* AVKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EFE97D5B1CCFC8840082BAEC = {
 			isa = PBXGroup;
 			children = (
 				EFE97D661CCFC8850082BAEC /* TempiBeatDetection */,
 				EFF64A881CD90C4900EBA555 /* TempiBeatDetectionTests */,
 				EFE97D651CCFC8850082BAEC /* Products */,
+				6F35835922E922FA00F3155F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

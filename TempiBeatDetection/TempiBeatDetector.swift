@@ -7,6 +7,8 @@
 
 import Foundation
 import Accelerate
+import AVFoundation
+import AVKit
 
 typealias TempiBeatDetectionCallback = (
     _ timeStamp: Double,
@@ -22,13 +24,15 @@ struct TempiPeakInterval {
 class TempiBeatDetector: NSObject {
     
     // All 3 of sampleRate, chunkSize, and hopSize must be changed in conjunction. (Halve one, halve all of them.)
-    var sampleRate: Float = 22050
-    
+    var sampleRate: Float = 22050 / 2
+    //var sampleRate: Float = 7350
+
     /// The size in samples of the audio buffer that gets analyzed during each pass
-    var chunkSize: Int = 2048
+    var chunkSize: Int = 2048 / 2
     
     /// The size in samples that we skip between passes
-    var hopSize: Int = 90
+    var hopSize: Int = 90 / 2
+    //var hopSize:Int = 30
     
     /// Minimum/maximum tempos that the beat detector can detect. Smaller ranges yield greater accuracy.
     var minTempo: Float = 60
@@ -205,7 +209,7 @@ class TempiBeatDetector: NSObject {
             if mag > 0.0 {
                 mag = log10f(mag)
             }
-            
+            //print(mag)
             // The 1000.0 here isn't important; just makes the data easier to see in plots, etc.
 //            if(self.lastMagnitudes.count == 0) {
 //                self.lastMagnitudes.append( mag)
@@ -215,8 +219,10 @@ class TempiBeatDetector: NSObject {
             //let diff: Float = mag - self.lastMagnitudes[i]
 
             let diff: Float = 1000.0 * max(0.0, mag - self.lastMagnitudes[i])
-            
+            if(diff != 0.0)
+            {
             //print(diff)
+            }
 
             diffs.append(diff)
             self.lastMagnitudes[i] = mag
