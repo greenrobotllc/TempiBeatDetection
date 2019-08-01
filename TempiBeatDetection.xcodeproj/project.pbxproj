@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		6F35835C22E922FA00F3155F /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F35835A22E922FA00F3155F /* AVKit.framework */; };
 		6F35835D22E922FA00F3155F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F35835B22E922FA00F3155F /* AVFoundation.framework */; };
+		6FCCB2E822F249CE0062F0E1 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FCCB2E622F249CE0062F0E1 /* Interface.storyboard */; };
+		6FCCB2EA22F249D10062F0E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FCCB2E922F249D10062F0E1 /* Assets.xcassets */; };
+		6FCCB2F122F249D10062F0E1 /* Salsa or Bachata Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6FCCB2F022F249D10062F0E1 /* Salsa or Bachata Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6FCCB2F622F249D10062F0E1 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCCB2F522F249D10062F0E1 /* InterfaceController.swift */; };
+		6FCCB2F822F249D10062F0E1 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCCB2F722F249D10062F0E1 /* ExtensionDelegate.swift */; };
+		6FCCB2FA22F249D10062F0E1 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCCB2F922F249D10062F0E1 /* NotificationController.swift */; };
+		6FCCB2FC22F249D20062F0E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FCCB2FB22F249D20062F0E1 /* Assets.xcassets */; };
+		6FCCB30122F249D20062F0E1 /* Salsa or Bachata.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6FCCB2E422F249CE0062F0E1 /* Salsa or Bachata.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EF0587141CD1827500745BF6 /* TempiBeatDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0587131CD1827500745BF6 /* TempiBeatDetector.swift */; };
 		EF0587171CD6F2BA00745BF6 /* TempiBeatDetectorValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0587161CD6F2BA00745BF6 /* TempiBeatDetectorValidation.swift */; };
 		EFE97D681CCFC8850082BAEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE97D671CCFC8850082BAEC /* AppDelegate.swift */; };
@@ -30,6 +38,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		6FCCB2F222F249D10062F0E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EFE97D5C1CCFC8840082BAEC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6FCCB2EF22F249D10062F0E1;
+			remoteInfo = "Salsa or Bachata Extension";
+		};
+		6FCCB2FF22F249D20062F0E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EFE97D5C1CCFC8840082BAEC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6FCCB2E322F249CE0062F0E1;
+			remoteInfo = "Salsa or Bachata";
+		};
 		EFF64A8C1CD90C4900EBA555 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EFE97D5C1CCFC8840082BAEC /* Project object */;
@@ -39,9 +61,45 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		6FCCB30522F249D20062F0E1 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6FCCB2F122F249D10062F0E1 /* Salsa or Bachata Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FCCB30922F249D20062F0E1 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				6FCCB30122F249D20062F0E1 /* Salsa or Bachata.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		6F35835A22E922FA00F3155F /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		6F35835B22E922FA00F3155F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		6FCCB2E422F249CE0062F0E1 /* Salsa or Bachata.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Salsa or Bachata.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FCCB2E722F249CE0062F0E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		6FCCB2E922F249D10062F0E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6FCCB2EB22F249D10062F0E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6FCCB2F022F249D10062F0E1 /* Salsa or Bachata Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Salsa or Bachata Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FCCB2F522F249D10062F0E1 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		6FCCB2F722F249D10062F0E1 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		6FCCB2F922F249D10062F0E1 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		6FCCB2FB22F249D20062F0E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6FCCB2FD22F249D20062F0E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6FCCB2FE22F249D20062F0E1 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		EF0587131CD1827500745BF6 /* TempiBeatDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempiBeatDetector.swift; sourceTree = "<group>"; };
 		EF0587161CD6F2BA00745BF6 /* TempiBeatDetectorValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempiBeatDetectorValidation.swift; sourceTree = "<group>"; };
 		EFE97D641CCFC8850082BAEC /* TempiBeatDetection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TempiBeatDetection.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +119,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6FCCB2ED22F249D10062F0E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EFE97D611CCFC8840082BAEC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -89,11 +154,36 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6FCCB2E522F249CE0062F0E1 /* Salsa or Bachata */ = {
+			isa = PBXGroup;
+			children = (
+				6FCCB2E622F249CE0062F0E1 /* Interface.storyboard */,
+				6FCCB2E922F249D10062F0E1 /* Assets.xcassets */,
+				6FCCB2EB22F249D10062F0E1 /* Info.plist */,
+			);
+			path = "Salsa or Bachata";
+			sourceTree = "<group>";
+		};
+		6FCCB2F422F249D10062F0E1 /* Salsa or Bachata Extension */ = {
+			isa = PBXGroup;
+			children = (
+				6FCCB2F522F249D10062F0E1 /* InterfaceController.swift */,
+				6FCCB2F722F249D10062F0E1 /* ExtensionDelegate.swift */,
+				6FCCB2F922F249D10062F0E1 /* NotificationController.swift */,
+				6FCCB2FB22F249D20062F0E1 /* Assets.xcassets */,
+				6FCCB2FD22F249D20062F0E1 /* Info.plist */,
+				6FCCB2FE22F249D20062F0E1 /* PushNotificationPayload.apns */,
+			);
+			path = "Salsa or Bachata Extension";
+			sourceTree = "<group>";
+		};
 		EFE97D5B1CCFC8840082BAEC = {
 			isa = PBXGroup;
 			children = (
 				EFE97D661CCFC8850082BAEC /* TempiBeatDetection */,
 				EFF64A881CD90C4900EBA555 /* TempiBeatDetectionTests */,
+				6FCCB2E522F249CE0062F0E1 /* Salsa or Bachata */,
+				6FCCB2F422F249D10062F0E1 /* Salsa or Bachata Extension */,
 				EFE97D651CCFC8850082BAEC /* Products */,
 				6F35835922E922FA00F3155F /* Frameworks */,
 			);
@@ -104,6 +194,8 @@
 			children = (
 				EFE97D641CCFC8850082BAEC /* TempiBeatDetection.app */,
 				EFF64A871CD90C4900EBA555 /* TempiBeatDetectionTests.xctest */,
+				6FCCB2E422F249CE0062F0E1 /* Salsa or Bachata.app */,
+				6FCCB2F022F249D10062F0E1 /* Salsa or Bachata Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -139,6 +231,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		6FCCB2E322F249CE0062F0E1 /* Salsa or Bachata */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6FCCB30622F249D20062F0E1 /* Build configuration list for PBXNativeTarget "Salsa or Bachata" */;
+			buildPhases = (
+				6FCCB2E222F249CE0062F0E1 /* Resources */,
+				6FCCB30522F249D20062F0E1 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6FCCB2F322F249D10062F0E1 /* PBXTargetDependency */,
+			);
+			name = "Salsa or Bachata";
+			productName = "Salsa or Bachata";
+			productReference = 6FCCB2E422F249CE0062F0E1 /* Salsa or Bachata.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		6FCCB2EF22F249D10062F0E1 /* Salsa or Bachata Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6FCCB30222F249D20062F0E1 /* Build configuration list for PBXNativeTarget "Salsa or Bachata Extension" */;
+			buildPhases = (
+				6FCCB2EC22F249D10062F0E1 /* Sources */,
+				6FCCB2ED22F249D10062F0E1 /* Frameworks */,
+				6FCCB2EE22F249D10062F0E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Salsa or Bachata Extension";
+			productName = "Salsa or Bachata Extension";
+			productReference = 6FCCB2F022F249D10062F0E1 /* Salsa or Bachata Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		EFE97D631CCFC8840082BAEC /* TempiBeatDetection */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EFE97D761CCFC8850082BAEC /* Build configuration list for PBXNativeTarget "TempiBeatDetection" */;
@@ -146,10 +272,12 @@
 				EFE97D601CCFC8840082BAEC /* Sources */,
 				EFE97D611CCFC8840082BAEC /* Frameworks */,
 				EFE97D621CCFC8840082BAEC /* Resources */,
+				6FCCB30922F249D20062F0E1 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				6FCCB30022F249D20062F0E1 /* PBXTargetDependency */,
 			);
 			name = TempiBeatDetection;
 			productName = TempiBeatDetection;
@@ -180,10 +308,20 @@
 		EFE97D5C1CCFC8840082BAEC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "John Scalo";
 				TargetAttributes = {
+					6FCCB2E322F249CE0062F0E1 = {
+						CreatedOnToolsVersion = 11.0;
+						DevelopmentTeam = 779S839979;
+						ProvisioningStyle = Automatic;
+					};
+					6FCCB2EF22F249D10062F0E1 = {
+						CreatedOnToolsVersion = 11.0;
+						DevelopmentTeam = 779S839979;
+						ProvisioningStyle = Automatic;
+					};
 					EFE97D631CCFC8840082BAEC = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 779S839979;
@@ -209,11 +347,30 @@
 			targets = (
 				EFE97D631CCFC8840082BAEC /* TempiBeatDetection */,
 				EFF64A861CD90C4900EBA555 /* TempiBeatDetectionTests */,
+				6FCCB2E322F249CE0062F0E1 /* Salsa or Bachata */,
+				6FCCB2EF22F249D10062F0E1 /* Salsa or Bachata Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6FCCB2E222F249CE0062F0E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FCCB2EA22F249D10062F0E1 /* Assets.xcassets in Resources */,
+				6FCCB2E822F249CE0062F0E1 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6FCCB2EE22F249D10062F0E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FCCB2FC22F249D20062F0E1 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EFE97D621CCFC8840082BAEC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -234,6 +391,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6FCCB2EC22F249D10062F0E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FCCB2FA22F249D10062F0E1 /* NotificationController.swift in Sources */,
+				6FCCB2F822F249D10062F0E1 /* ExtensionDelegate.swift in Sources */,
+				6FCCB2F622F249D10062F0E1 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EFE97D601CCFC8840082BAEC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -266,6 +433,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		6FCCB2F322F249D10062F0E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6FCCB2EF22F249D10062F0E1 /* Salsa or Bachata Extension */;
+			targetProxy = 6FCCB2F222F249D10062F0E1 /* PBXContainerItemProxy */;
+		};
+		6FCCB30022F249D20062F0E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6FCCB2E322F249CE0062F0E1 /* Salsa or Bachata */;
+			targetProxy = 6FCCB2FF22F249D20062F0E1 /* PBXContainerItemProxy */;
+		};
 		EFF64A8D1CD90C4900EBA555 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EFE97D631CCFC8840082BAEC /* TempiBeatDetection */;
@@ -274,6 +451,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		6FCCB2E622F249CE0062F0E1 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6FCCB2E722F249CE0062F0E1 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		EFE97D6B1CCFC8850082BAEC /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -293,6 +478,114 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		6FCCB30322F249D20062F0E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 779S839979;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Salsa or Bachata Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.greenrobot.salsa-or-bachata.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Debug;
+		};
+		6FCCB30422F249D20062F0E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 779S839979;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Salsa or Bachata Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.greenrobot.salsa-or-bachata.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Release;
+		};
+		6FCCB30722F249D20062F0E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 779S839979;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IBSC_MODULE = Salsa_or_Bachata_Extension;
+				INFOPLIST_FILE = "Salsa or Bachata/Info.plist";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.greenrobot.salsa-or-bachata.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Debug;
+		};
+		6FCCB30822F249D20062F0E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 779S839979;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IBSC_MODULE = Salsa_or_Bachata_Extension;
+				INFOPLIST_FILE = "Salsa or Bachata/Info.plist";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.greenrobot.salsa-or-bachata.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Release;
+		};
 		EFE97D741CCFC8850082BAEC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -408,7 +701,7 @@
 				DEVELOPMENT_TEAM = 779S839979;
 				INFOPLIST_FILE = TempiBeatDetection/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.scalo.TempiBeatDetection;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.greenrobot.salsa-or-bachata";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -421,7 +714,7 @@
 				DEVELOPMENT_TEAM = 779S839979;
 				INFOPLIST_FILE = TempiBeatDetection/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.scalo.TempiBeatDetection;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.greenrobot.salsa-or-bachata";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -456,6 +749,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6FCCB30222F249D20062F0E1 /* Build configuration list for PBXNativeTarget "Salsa or Bachata Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FCCB30322F249D20062F0E1 /* Debug */,
+				6FCCB30422F249D20062F0E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6FCCB30622F249D20062F0E1 /* Build configuration list for PBXNativeTarget "Salsa or Bachata" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FCCB30722F249D20062F0E1 /* Debug */,
+				6FCCB30822F249D20062F0E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EFE97D5F1CCFC8840082BAEC /* Build configuration list for PBXProject "TempiBeatDetection" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

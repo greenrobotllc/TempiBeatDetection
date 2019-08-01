@@ -24,22 +24,26 @@ struct TempiPeakInterval {
 class TempiBeatDetector: NSObject {
     
     // All 3 of sampleRate, chunkSize, and hopSize must be changed in conjunction. (Halve one, halve all of them.)
-    var sampleRate: Float = 22050 / 2
+    var sampleRate: Float = 22050
     //var sampleRate: Float = 7350
 
     /// The size in samples of the audio buffer that gets analyzed during each pass
-    var chunkSize: Int = 2048 / 2
+    var chunkSize: Int = 2048
     
     /// The size in samples that we skip between passes
-    var hopSize: Int = 90 / 2
+    var hopSize: Int = 90
     //var hopSize:Int = 30
     
     /// Minimum/maximum tempos that the beat detector can detect. Smaller ranges yield greater accuracy.
-    var minTempo: Float = 60
+    var minTempo: Float = 90
     var maxTempo: Float = 220
-
+    //Salsa 180 - 300 beats per minute
+    //Merenge 130 - 200 beats per minute
+    //Bachata 90 - 200 beats per minute
+    
+    
     /// The number of bands to split the audio signal into. 6, 12, or 30 supported.
-    var frequencyBands: Int = 6
+    var frequencyBands: Int = 30
 
     var beatDetectionHandler: TempiBeatDetectionCallback!
     
@@ -318,6 +322,10 @@ class TempiBeatDetector: NSObject {
         }
         
         self.lastMeasuredTempo = bpm
+        //todo add confidence and type to appdelegate
+        //print("Confidence: %d", self.confidence)
+        appDelegate().confidence=self.confidence
+        appDelegate().type="detecting"
     }
     
     private func mapInterval(interval: Double) -> Double {

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14845" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TBo-Ta-YXk">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TBo-Ta-YXk">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14799.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -28,7 +30,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8G5-4P-PPi">
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8G5-4P-PPi">
                                 <rect key="frame" x="20" y="44" width="110" height="110"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="BAl-RK-4lj"/>
@@ -40,7 +42,7 @@
                                     <action selector="range60ButtonWithSender:" destination="TBo-Ta-YXk" eventType="touchDown" id="cWO-4c-6xS"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7X-bn-Ezp">
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7X-bn-Ezp">
                                 <rect key="frame" x="284" y="44" width="110" height="110"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="WuV-Hy-hTj"/>
@@ -52,7 +54,7 @@
                                     <action selector="range80ButtonWithSender:" destination="TBo-Ta-YXk" eventType="touchDown" id="9qp-uj-loI"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8n-fg-C8w" userLabel="Range100 Button">
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8n-fg-C8w" userLabel="Range100 Button">
                                 <rect key="frame" x="20" y="732" width="110" height="110"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="Tft-vI-dno"/>
@@ -64,7 +66,7 @@
                                     <action selector="range100ButtonWithSender:" destination="TBo-Ta-YXk" eventType="touchDown" id="AfG-JB-rut"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kaU-BM-bfD" userLabel="Range 120-240 Button">
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kaU-BM-bfD" userLabel="Range 120-240 Button">
                                 <rect key="frame" x="284" y="732" width="110" height="110"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="5Kc-E6-LIb"/>
@@ -76,32 +78,50 @@
                                     <action selector="range120ButtonWithSender:" destination="TBo-Ta-YXk" eventType="touchDown" id="pKP-CK-lJp"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fkt-f2-MDu">
+                                <rect key="frame" x="20" y="646" width="374" height="37"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Confidence" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZzI-6I-UCu">
+                                <rect key="frame" x="20" y="601" width="374" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Fkt-f2-MDu" secondAttribute="trailing" id="5Hv-bZ-Fcl"/>
                             <constraint firstAttribute="leadingMargin" secondItem="v8n-fg-C8w" secondAttribute="leading" id="CC9-rH-ah9"/>
                             <constraint firstItem="m7X-bn-Ezp" firstAttribute="top" secondItem="7JL-tr-VC5" secondAttribute="bottom" id="CRK-9a-aWE"/>
                             <constraint firstItem="xD5-c4-meB" firstAttribute="top" secondItem="v8n-fg-C8w" secondAttribute="bottom" constant="20" id="D7Z-IO-eHk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kaU-BM-bfD" secondAttribute="trailing" id="E2U-WX-Jqd"/>
+                            <constraint firstItem="Fkt-f2-MDu" firstAttribute="top" secondItem="taA-7i-XKy" secondAttribute="bottom" constant="100" id="KcN-ps-LJj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="m7X-bn-Ezp" secondAttribute="trailing" id="R1P-Bh-bXM"/>
                             <constraint firstItem="taA-7i-XKy" firstAttribute="centerX" secondItem="5bz-1u-uv8" secondAttribute="centerX" id="ZA6-EN-Z9B"/>
                             <constraint firstItem="taA-7i-XKy" firstAttribute="centerY" secondItem="5bz-1u-uv8" secondAttribute="centerY" id="cGf-pa-2JW"/>
                             <constraint firstItem="8G5-4P-PPi" firstAttribute="top" secondItem="7JL-tr-VC5" secondAttribute="bottom" id="dKZ-RT-emd"/>
+                            <constraint firstItem="Fkt-f2-MDu" firstAttribute="leading" secondItem="5bz-1u-uv8" secondAttribute="leadingMargin" id="fs5-Tt-PkB"/>
                             <constraint firstAttribute="leadingMargin" secondItem="8G5-4P-PPi" secondAttribute="leading" id="sKQ-Li-yt1"/>
                             <constraint firstItem="xD5-c4-meB" firstAttribute="top" secondItem="kaU-BM-bfD" secondAttribute="bottom" constant="20" id="zJG-p0-mCG"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="bpmLabel" destination="taA-7i-XKy" id="dx8-ct-Hak"/>
+                        <outlet property="confidenceLabel" destination="ZzI-6I-UCu" id="FCL-Zu-wFZ"/>
                         <outlet property="range100Button" destination="v8n-fg-C8w" id="bg2-Df-l57"/>
                         <outlet property="range120Button" destination="kaU-BM-bfD" id="ipK-t4-bhF"/>
                         <outlet property="range60Button" destination="8G5-4P-PPi" id="mGi-dc-0no"/>
                         <outlet property="range80Button" destination="m7X-bn-Ezp" id="g3i-SA-8bV"/>
+                        <outlet property="typeLabel" destination="Fkt-f2-MDu" id="WNS-iz-9t5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yy1-am-apG" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="547" y="348"/>
+            <point key="canvasLocation" x="546.37681159420299" y="347.54464285714283"/>
         </scene>
     </scenes>
 </document>

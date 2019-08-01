@@ -12,6 +12,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    public var confidence:Int = 0
+    public var type:String = ""
 
     private func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -43,3 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+func appDelegate () -> AppDelegate
+{
+    return UIApplication.shared.delegate as! AppDelegate
+}
